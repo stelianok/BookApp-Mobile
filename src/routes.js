@@ -15,7 +15,8 @@ export default function Routes() {
       <Tab.Navigator
         initialRouteName="Feed"
         activeColor="#fff"
-        style={{backgroundColor: 'tomato'}}>
+        barStyle={{ backgroundColor: '#757de8' }}
+        shifting={true}>
         <Tab.Screen
           name="Home"
           component={Feed}
