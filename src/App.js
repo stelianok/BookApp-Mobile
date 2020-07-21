@@ -1,10 +1,12 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {StatusBar} from 'react-native';
 
+import Routes from './routes';
 export default function App() {
   return (
-    <View>
-      <Text> Aplicativo UOU </Text>
-    </View>
+    <>
+      <StatusBar backgroundColor="#002984" />
+      <Routes />
+    </>
   );
 }
