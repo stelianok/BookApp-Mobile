@@ -15,7 +15,7 @@ const styles = StyleSheet.create({
   title: {
     color: '#000',
     fontWeight: 'bold',
-    fontSize: 36,
+    fontSize: 24,
   },
   titleView: {
     flexDirection: 'row',
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   },
   author: {
     color: 'gray',
-    fontSize: 24,
+    fontSize: 18,
 
     alignSelf: 'center',
   },
