@@ -1,31 +1,31 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {SafeAreaView, FlatList} from 'react-native';
+
+import api from './../../services/api';
 
 import styles from './styles';
 
 import Book from './../../components/Book';
 
 export default function Feed() {
-  const data = [
-    {
-      id: 1,
-      title: 'Harry Potter e a pedra filosofal',
-      author: 'J.K Rowling',
-    },
-    {
-      id: 2,
-      title: 'Game of Thrones',
-      author: 'George R. R. Martin',
-    },
-    {
-      id: 3,
-      title: 'A feast for crows',
-      author: 'George R. R. Martin',
-    },
-  ];
-  function GetBooks(){
-    
+  const [data, setData] = useState();
+  async function GetBooks() {
+    try {
+      const response = await api.get('/books');
+      //console.log(response.data);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      return error;
+    }
   }
+
+  useEffect(() => {
+    GetBooks().then((data) => {
+      setData(data);
+    });
+  }, [data]);
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
