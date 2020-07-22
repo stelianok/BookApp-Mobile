@@ -8,6 +8,8 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 
+import api from './../../services/api';
+
 import styles from './styles';
 
 export default function AddBook() {
@@ -15,6 +17,21 @@ export default function AddBook() {
   const [author, setAuthor] = useState('');
 
   const width = useWindowDimensions().width;
+
+  async function AddNewBook(title, author) {
+    const data = {
+      author: author,
+      title: title,
+    };
+    await api
+      .post('/books', data)
+      .then((res) => {
+        console.log(res.status);
+      })
+      .catch((err) => {
+        console.log(err.response.data.error);
+      });
+  }
   return (
     <View style={styles.container}>
       <KeyboardAvoidingView style={styles.formView}>
@@ -40,7 +57,9 @@ export default function AddBook() {
 
         <TouchableOpacity
           style={[styles.button, {width: width - 55}]}
-          onPress={() => {}}>
+          onPress={() => {
+            AddNewBook(title, author);
+          }}>
           <Text style={styles.buttonText}> Add the new book </Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>

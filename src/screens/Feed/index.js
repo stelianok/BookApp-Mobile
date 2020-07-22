@@ -23,6 +23,9 @@ export default function Feed() {
       author: 'George R. R. Martin',
     },
   ];
+  function GetBooks(){
+    
+  }
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
